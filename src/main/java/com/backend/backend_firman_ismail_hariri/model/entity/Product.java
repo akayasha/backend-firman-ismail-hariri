@@ -28,4 +28,11 @@ public class Product implements Serializable {
     @ManyToOne
     @JoinColumn(name = "merchant_id", nullable = false)
     private User merchant;
+
+    public Product() {}
+
+    public Product(Long id) {
+        this.id = id;
+    }
+
 }

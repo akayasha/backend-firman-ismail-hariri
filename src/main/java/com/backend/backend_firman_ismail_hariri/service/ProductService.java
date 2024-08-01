@@ -34,14 +34,13 @@ public class ProductService {
     }
 
     public Product updateProduct(Product product) {
-        User user = authenticatedUserUtil.getAuthenticatedUser();
-        if (!"MERCHANT".equals(user.getRole())) {
-            throw new RuntimeException("Unauthorized: Only merchants can update products");
+        User merchant = authenticatedUserUtil.getAuthenticatedUser();
+        if (merchant == null || !"MERCHANT".equals(merchant.getRole())) {
+            throw new ResponseStatusException(HttpStatus.FORBIDDEN, "Unauthorized: Only merchants can update products");
         }
-        product.setMerchant(user);
+        product.setMerchant(merchant);
         return productRepository.save(product);
     }
-
 
     public List<Product> listProducts() {
         return productRepository.findAll();
@@ -49,17 +48,20 @@ public class ProductService {
 
     public List<Product> listProductsByMerchant() {
         User merchant = authenticatedUserUtil.getAuthenticatedUser();
+        if (merchant == null || !"MERCHANT".equals(merchant.getRole())) {
+            throw new ResponseStatusException(HttpStatus.FORBIDDEN, "Unauthorized: Only merchants can list products");
+        }
         return productRepository.findByMerchant(merchant);
     }
 
     public void deleteProduct(Long productId) {
         User merchant = authenticatedUserUtil.getAuthenticatedUser();
+        if (merchant == null || !"MERCHANT".equals(merchant.getRole())) {
+            throw new ResponseStatusException(HttpStatus.FORBIDDEN, "Unauthorized: Only merchants can delete products");
+        }
         if (productId == null) {
-            throw new RuntimeException("Product ID must not be null");
-        } else if (merchant == null || !"MERCHANT".equals(merchant.getRole())) {
-            throw new ResponseStatusException(HttpStatus.FORBIDDEN, "Unauthorized: Only merchants can create products");
+            throw new IllegalArgumentException("Product ID must not be null");
         }
         productRepository.deleteById(productId);
     }
 }
-

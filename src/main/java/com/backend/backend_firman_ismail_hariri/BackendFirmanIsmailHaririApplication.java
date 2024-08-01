@@ -6,7 +6,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 @EnableWebMvc
 @SpringBootApplication
-public class BackendFirmanIsmailHaririApplication {
+public class  BackendFirmanIsmailHaririApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(BackendFirmanIsmailHaririApplication.class, args);
