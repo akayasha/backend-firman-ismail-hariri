@@ -30,16 +30,16 @@ This project is an e-commerce platform that includes product management, order m
 ### Installation
 1. **Clone the repository:**
     ```sh
-    git clone https://github.com/yourusername/your-repository.git
+    git clone https://github.com/https://github.com/akayasha/backend-firman-ismail-hariri.git
     cd your-repository
     ```
 
 2. **Configure the database:**
     - Update the `application.properties` file with your MySQL database configuration.
     ```properties
-    spring.datasource.url=jdbc:mysql://localhost:3306/your-database
-    spring.datasource.username=your-username
-    spring.datasource.password=your-password
+    spring.datasource.url=jdbc:mysql://localhost:3306/test-backend
+    spring.datasource.username=root
+    spring.datasource.password=pass
     spring.jpa.hibernate.ddl-auto=update
     ```
 
