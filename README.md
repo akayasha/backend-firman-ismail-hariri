@@ -122,5 +122,5 @@ This project is an e-commerce platform that includes product management, order m
 This project is licensed under the MIT License.
 
 ## Contact
-For any inquiries, please contact [your-email@example.com](mailto:your-email@example.com).
+For any inquiries, please contact [akayasha99@gmail.com](mailto:akayasha99@gmail.com).
 
